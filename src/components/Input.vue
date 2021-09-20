@@ -4,9 +4,9 @@
       <v-container fill-height>
         <v-row class="text-center" align="center" justify="center">
           <v-col cols="12" class="mb-4 mt-5">
-            <h1 class="display-3 mb-3" id="title">
-              나만의 별 찾기
-            </h1>
+            <p class="subheading font-weight-regular" id="description">
+              밤하늘을 빛내고 있는 별들 중<br> 나만의 별을 찾아보자!
+            </p>
           </v-col>
           <v-col cols="12" sm="6" class="mb-4 mt-5" >
               <!-- <input type="text" v-model="name" placeholder="이름"> -->
@@ -73,11 +73,11 @@
   }
 </script>
 <style scoped>
-#title {
-  color: #C5CAE9;
-  font-family: 'Nanum Pen Script', cursive !important;
-  font-weight: 500;
-  font-size: 5rem !important;
+#description{
+  color: #e9eaf5;
+  font-family: 'Gowun Batang', serif !important;
+  font-size: 1.4rem !important;
+  font-weight: 300;
  }
 #confirmBtn {
   font-family: 'Jua', sans-serif !important;

@@ -1,7 +1,9 @@
 <template>
   <v-app>
     <v-main>
+      <transition name="fade"  mode="out-in">
         <router-view></router-view>
+      </transition>
     </v-main>
   </v-app>
 </template>
@@ -46,7 +48,15 @@ background-color: #464646;
 }
 body {
   text-align: center;
-
+}
+.fade-enter {
+   opacity: 0; 
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease-out; 
+}
+.fade-leave-to {
+  opacity: 0; 
 }
 
 </style>
