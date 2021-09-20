@@ -8,6 +8,11 @@
               나만의 별 찾기
             </h1>
           </v-col>
+          <v-col cols="12" class="mb-4 mt-7">
+            <p class="subheading font-weight-regular" id="description">
+              밤하늘을 빛내고 있는 별들 중<br> 나만의 별을 찾아보자!
+            </p>
+          </v-col>
         </v-row>
         <v-row class="text-center" align="end" justify="center">
           <v-col cols="12" class="mb-4">
@@ -46,6 +51,14 @@ export default {
   font-weight: 500;
   font-size: 5rem !important;
  }
+
+ #description{
+  color: #e9eaf5;
+  font-family: 'Gowun Batang', serif !important;
+  font-size: 1.4rem !important;
+  font-weight: 300;
+ }
+
 #startBtn {
   font-family: 'Jua', sans-serif !important;
   font-size: 1.5rem;
