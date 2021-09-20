@@ -58,6 +58,13 @@ body {
 .fade-leave-to {
   opacity: 0; 
 }
-
+.v-messages__message {
+    color: #ffc9c9 !important;
+    font-weight: 900 !important;
+    font-family: 'Gowun Batang', serif !important;
+}
+.v-label {
+  font-weight: 500 !important;
+}
 </style>
 

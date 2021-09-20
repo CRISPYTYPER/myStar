@@ -9,23 +9,32 @@
             </p>
           </v-col>
           <v-col cols="12" sm="6" class="mb-4 mt-5" >
-              <!-- <input type="text" v-model="name" placeholder="이름"> -->
-              <v-text-field
-                label="이름"
-                placeholder="예)김홍도"
-                single-line
-                outlined
-                v-model="name"
-                background-color="white"
-              ></v-text-field>
-              <!-- <input type="text" v-model="birthDay" placeholder="생년월일" v-on:keyup.enter="clickConfirm"> -->
-              <v-text-field
-                label="생년월일"
-                placeholder="예)950101"
-                single-line
-                outlined
-                background-color="white"
-              ></v-text-field>
+            <v-form ref="form" lazy-validation v-model="valid">
+                <!-- <input type="text" v-model="name" placeholder="이름"> -->
+                <v-text-field
+                  label="이름"
+                  placeholder="예) 김홍도"
+                  single-line
+                  outlined
+                  v-model="name"
+                  background-color="white"
+                  :rules="nameRules"
+                  required
+                  id="nameField"
+                ></v-text-field>
+                <!-- <input type="text" v-model="birthDay" placeholder="생년월일" v-on:keyup.enter="clickConfirm"> -->
+                <v-text-field
+                  label="생년월일"
+                  placeholder="예) 950101"
+                  single-line
+                  outlined
+                  v-model="birthDay"
+                  background-color="white"
+                  :rules="birthDayRules"
+                  required
+                  id="birthDayField"
+                ></v-text-field>
+              </v-form>
           </v-col>
         </v-row>
         <v-row class="text-center" align="end" justify="center">
@@ -51,18 +60,30 @@
   export default {
     data() {
       return {
+        valid: true,
         name: '',
-        birthDay: ''
+        birthDay: '',
+        nameRules: [
+        v => !!v || '이름을 입력해주세요.',
+        v => isNaN(v) || '이름을 입력해주세요.',
+        ],
+        birthDayRules: [
+        v => !!v || '생년월일을 입력해주세요.',
+        v => !isNaN(v) || '숫자를 입력해주세요.',
+        v => v.length == 6 || '6자리로 입력해주세요.'
+        ]
       }
     },
     methods: {
       clickConfirm() {
-        if(this.name !== "" && this.birthDay !== ""){
+        const validate = this.$refs.form.validate();
+        if(validate){
           const name = this.name && this.name.trim();
           const birthDay = this.birthDay && this.birthDay.trim();
           localStorage.setItem('name', name);
           localStorage.setItem('birthDay', birthDay);
           this.clearInput();
+          this.$router.push('/result');
         }
       },
       clearInput() {
