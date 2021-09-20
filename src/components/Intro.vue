@@ -13,7 +13,7 @@
             <v-btn
               color="error"
               dark
-              large
+              x-large
               id="startBtn"
             >
               시작하기
