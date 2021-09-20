@@ -12,6 +12,7 @@ export default {
   name: 'App',
 
   components: {
+    
   },
 
   data: () => ({
@@ -42,6 +43,10 @@ background-size: cover;
 /* Set a background color that will be displayed
 while the background image is loading */
 background-color: #464646;
+}
+body {
+  text-align: center;
+
 }
 </style>
 
