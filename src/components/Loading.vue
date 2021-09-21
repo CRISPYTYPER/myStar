@@ -19,10 +19,40 @@
   </v-app>
 </template>
 <script>
+  import axios from 'axios';
+  const convert = require('xml-js')
+  import { findCustomStar } from '@/assets/javascripts/starFind.js'
   export default {
+    data() {
+      return {
+        xmlContent: null,
+        xmlError: false,
+        dataList: [],
+        userName: '',
+        userBirthDay: ''
+      }
+    },
     created() {
       if(localStorage.getItem('name') === null || localStorage.getItem('birthDay') === null) {
         this.$router.push({ path: "/" });
+      }
+      this.userName = localStorage.getItem('name');
+      this.userBirthDay = localStorage.getItem('birthDay');
+      this.loadData() //xml 파일 불러와 dataList변수에 javascript 변수 저장
+    },
+    methods: {
+      loadData() {
+        axios.get('/data/starData.xml').then(response => {
+        this.xmlContent = response.data;
+        const jsonContent = convert.xml2json(this.xmlContent, { compact: true })
+        this.dataList = JSON.parse(jsonContent);
+        this.processData(); //동기 처리를 위함
+      }, () => {
+        this.xmlError = true;
+      });
+      },
+      processData() {
+        findCustomStar(this.dataList, this.userBirthDay, this.userBirthDay);
       }
     }
   }
