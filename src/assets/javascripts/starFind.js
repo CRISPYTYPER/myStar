@@ -7,7 +7,20 @@ function getPrivateNumber(userName, userBirthDay) { //유저 이름, 생년월�
 }
 export function findCustomStar(xmlData, userName, userBirthDay) {
   const privateNumber = getPrivateNumber(userName, userBirthDay);
-  console.log(xmlData.table.tbody);
-  console.log(privateNumber);
+  const rowList = xmlData.table.tbody.tr;
+  const rowLength = rowList.length - 1; // 355이지만 헤더 제외 (354개)
+  const privateRowNum = privateNumber % rowLength + 1; //헤더 제외하기 때문에 1 추가(1~354)
+  const privateRow = rowList[privateRowNum];
+  const privateStarNameEn = privateRow.td[0]._text;
+  const privateStarNameKr = privateRow.td[1].a._text;
+  const privateStarNameOrigin = privateRow.td[2]._text;
+  const privateStarConstellation = privateRow.td[3].a._text;
+  const privateStarObject = {
+    starNameEn: privateStarNameEn,
+    starNameKr: privateStarNameKr,
+    starNameOrigin: privateStarNameOrigin,
+    starConstellation: privateStarConstellation
+  }
+  return privateStarObject;
 }
 
