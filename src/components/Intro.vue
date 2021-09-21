@@ -42,6 +42,9 @@ import IntroFooter from '@/components/IntroFooter.vue'
 export default {
   components: {
     'IntroFooter': IntroFooter
+  },
+  created() {
+    localStorage.clear();
   }
 }
 </script>

@@ -83,7 +83,7 @@
           localStorage.setItem('name', name);
           localStorage.setItem('birthDay', birthDay);
           this.clearInput();
-          this.$router.push('/result');
+          this.$router.push({ path: "/loading" });
         }
       },
       clearInput() {
