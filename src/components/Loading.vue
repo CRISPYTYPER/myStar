@@ -26,6 +26,7 @@
       }
     }
   }
+
 </script>
 <style scoped>
 .v-progress-circular {
