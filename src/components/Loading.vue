@@ -20,7 +20,7 @@
 </template>
 <script>
   import axios from 'axios';
-  const convert = require('xml-js')
+  const convert = require('xml-js');
   import { findCustomStar } from '@/assets/javascripts/starFind.js'
   export default {
     data() {
@@ -63,7 +63,7 @@
         this.userStarObject = findCustomStar(this.dataList, this.userBirthDay, this.userBirthDay);
       },
       loadPicture() {
-        const getUrl = "https://serpapi.com/search.json?q=star+"+ this.userStarObject.starNameEn + "&tbm=isch&ijn=0&api_key=secret_api_key"
+        const getUrl = ""
         axios.get(getUrl).then(response => {
         this.picResponseData = response.data;
         console.log(this.picResponseData);
