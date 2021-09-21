@@ -13,13 +13,15 @@ export function findCustomStar(xmlData, userName, userBirthDay) {
   const privateRow = rowList[privateRowNum];
   const privateStarNameEn = privateRow.td[0]._text;
   const privateStarNameKr = privateRow.td[1].a._text;
-  const privateStarNameOrigin = privateRow.td[2]._text;
-  const privateStarConstellation = privateRow.td[3].a._text;
+  const privateStarNameOrigin = privateRow.td[2]._text; //명칭 유래 (가끔 빈 값도 있어서 사용 안할듯)
+  const privateStarConstellation = privateRow.td[3].a._text; //별자리 이름
+  const privateStarMagnitude = privateRow.td[4]._text; //겉보기 등급
   const privateStarObject = {
     starNameEn: privateStarNameEn,
     starNameKr: privateStarNameKr,
     starNameOrigin: privateStarNameOrigin,
-    starConstellation: privateStarConstellation
+    starConstellation: privateStarConstellation,
+    starMagnitude: privateStarMagnitude
   }
   return privateStarObject;
 }
