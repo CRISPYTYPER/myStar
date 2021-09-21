@@ -63,7 +63,7 @@
         this.userStarObject = findCustomStar(this.dataList, this.userBirthDay, this.userBirthDay);
       },
       loadPicture() {
-        const getUrl = "https://serpapi.com/search.json?q=star+"+ this.userStarObject.starNameEn + "&tbm=isch&ijn=0"
+        const getUrl = "https://serpapi.com/search.json?q=star+"+ this.userStarObject.starNameEn + "&tbm=isch&ijn=0&api_key=secret_api_key"
         axios.get(getUrl).then(response => {
         this.picResponseData = response.data;
         console.log(this.picResponseData);
