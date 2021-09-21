@@ -31,7 +31,6 @@
         userName: '',
         userBirthDay: '',
         userStarObject: {},
-        picResponseData: null
       }
     },
     created() {
@@ -50,26 +49,15 @@
         this.dataList = JSON.parse(jsonContent);
         this.processData(); //동기 처리를 위함
         localStorage.setItem('userStarObject', JSON.stringify(this.userStarObject));
-        this.loadPicture();
-        // setTimeout(() => {
-        //   this.$router.push({ path: "/result" });
-        // }, 2000); //기다리는 느낌을 주기 위해 2초 딜레이
-        this.$router.push({ path: "/result" });
+        setTimeout(() => {
+          this.$router.push({ path: "/result" });
+        }, 2000); //기다리는 느낌을 주기 위해 2초 딜레이
       }, () => {
         this.xmlError = true;
       });
       },
       processData() {
         this.userStarObject = findCustomStar(this.dataList, this.userBirthDay, this.userBirthDay);
-      },
-      loadPicture() {
-        const getUrl = ""
-        axios.get(getUrl).then(response => {
-        this.picResponseData = response.data;
-        console.log(this.picResponseData);
-      }, () => {
-        this.xmlError = true;
-      });
       }
     }
   }

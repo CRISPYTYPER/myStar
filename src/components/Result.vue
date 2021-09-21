@@ -9,6 +9,13 @@
             </p>
           </v-col>
         </v-row>
+        <v-row class="text-center" align="start" justify="center">
+          <v-col cols="12" class="mb-2">
+            <img
+              :src = "picUrl"
+            />
+          </v-col>
+        </v-row>
         <v-row class="text-center mt-3 mb-0" align="end" justify="center" id="starInfo">
           <v-col cols="12" class="mt-5 mb-0">
             <br>
@@ -22,14 +29,17 @@
   </v-app>
 </template>
 <script>
+  import { searchFunc } from '@/assets/javascripts/getGoogleImg.js'
   export default {
     data() {
       return {
-        userName:'',
-        starNameEn:'',
-        starNameKr:'',
-        starConstellation:'',
-        starMagnitude:''
+        userName: '',
+        starNameEn: '',
+        starNameKr: '',
+        starConstellation: '',
+        starMagnitude: '',
+        picUrl: '',
+        thumbUrl: ''
       }
     },
     created() {
@@ -43,9 +53,19 @@
       this.starConstellation = starObject.starConstellation;
       this.starMagnitude = starObject.starMagnitude;
       this.userName = localStorage.getItem('name');
+      this.loadPicture();
     },
     methods: {
-      
+      loadPicture() {
+        let picList
+        new Promise(() => {
+          picList = searchFunc(this.starNameEn);
+        })
+        .then(() => {
+          this.picUrl = picList[0];
+          this.thumbUrl = picList[1];
+        })
+      }
     }
   }
 </script>
